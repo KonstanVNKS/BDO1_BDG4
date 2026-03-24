@@ -54,11 +54,19 @@ where not EXISTS(SELECT 1
 SELECT id_s
 from s 
 where EXISTS(SELECT 1
-             from spj, spj l2
+             from spj
              where s.ID_S = spj.ID_S
              GROUP by spj.id_s
              having count(spj.ID_S) >=4 and count(DISTINCT spj.ID_P) >=3);
 
 -- ex 8
+SELECT id_s 
+from s 
+where EXISTS(SELECT 1
+            from spj, p 
+            where s.ID_S = spj.id_s
+            and spj.id_p = p.id_p
+            GROUP by id_s
+            having count(DISTINCT id_j)>=3 and count(DISTINCT id_p) >=2);
 
 
