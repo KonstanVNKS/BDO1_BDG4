@@ -39,7 +39,7 @@ where ssn not in (select ssn from telephone);
 
 
 -- ex9
-select nom, string_agg(numero,numero)
+select nom, string_agg(numero,',')
 from personne left outer join telephone on personne.ssn = telephone.ssn
 group by nom;
 
@@ -48,7 +48,7 @@ group by nom;
 select nom, nb
 from (select count(expediteur) as nb, nom
       from message right outer join personne on message.expediteur = personne.ssn
-      group by  personne.nom
+      group by  personne.ssn
       order by count(*) desc ) as count;
 
 select nom, (select count(*) from message where message.expediteur = personne.ssn) as nb
@@ -61,16 +61,18 @@ from personne;
 
 -- ex12
 select max(nb)
-from (select count(expediteur) as nb from message group by expediteur) as compte;
+from (select count(*) as nb from message group by expediteur) as compte;
 
 -- ex13
 select nom
 from destinataires right outer join personne p on destinataires.destinataire = p.ssn
 group by destinataire,nom
-having count(destinataire)>=all(select max(nb)
+having count(destinataire)=(select max(nb)
 from (select count(expediteur) as nb from message group by expediteur) as compte);
 
 -- ex14
 select avg(nb)
 from (select count(destinataire) as nb from destinataires group by id_message) as compte;
+
+
 
