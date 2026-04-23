@@ -4,5 +4,7 @@
     <file url="file://$PROJECT_DIR$/cours1.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/cours2.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/cours3.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/cours4.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/recap.sql" dialect="PostgreSQL" />
   </component>
 </project>
